@@ -19,7 +19,7 @@ The model is evaluated on five benchmark datasets for binary text classification
 | CR      | 3,024 | 364        | 384  | 3,772  | pos/neg |
 | MPQA    | 8,496 | 1,035      | 1,072 | 10,603 | pos/neg |
 
-MR and SST require local files. Set the path inside `src/data.py` before running. SUBJ and MPQA are loaded automatically via the Hugging Face `datasets` library.
+MR, CR and SST require local files. Set the path inside `src/data.py` before running. SUBJ and MPQA are loaded automatically via the Hugging Face `datasets` library.
 
 ## Model Architecture
 
@@ -28,6 +28,9 @@ The pipeline consists of three stages.
 1. A TF-IDF vectorizer compresses raw text into a 5,000-dimensional sparse feature vector.
 2. A fully-connected linear layer with tanh activation projects the features down to 4 dimensions, one per qubit.
 3. A variational quantum circuit (VQC) with 4 qubits and 2 layers applies angle embedding, parameterized RX, RY, RZ rotations, and CNOT entanglement. Pauli-Z expectation values are measured and passed to a final linear classification layer.
+
+![Pipeline](figures/pipeline.png)
+![VQC](figures/vqc.png)
 
 Total trainable parameters: 20,038.
 
