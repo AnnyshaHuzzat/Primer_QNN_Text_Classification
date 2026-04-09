@@ -77,4 +77,3 @@ Will be provided once available.
 
 ## License
 
-MIT
