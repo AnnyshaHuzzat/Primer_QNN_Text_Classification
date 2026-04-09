@@ -1,7 +1,6 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from torch.utils.data import DataLoader, TensorDataset
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import accuracy_score, f1_score, roc_auc_score, classification_report
 import numpy as np
@@ -9,18 +8,18 @@ import argparse
 import os
 
 from src.model import HybridClassifier
-from src.data import load_dataset
+from src.data import load_text_dataset
 
 
 def train(cfg):
     # Data Loading
-    X_train, X_val, X_test, y_train, y_val, y_test = load_dataset(cfg["dataset"])
+    X_train, X_val, X_test, y_train, y_val, y_test = load_text_dataset(cfg["dataset"])
 
     # TF-IDF Vectorization
     vectorizer = TfidfVectorizer(max_features=cfg["max_features"])
-    X_train_tfidf = vectorizer.fit_transform(X_train.tolist()).toarray()
-    X_val_tfidf   = vectorizer.transform(X_val.tolist()).toarray()
-    X_test_tfidf  = vectorizer.transform(X_test.tolist()).toarray()
+    X_train_tfidf = vectorizer.fit_transform(list(X_train)).toarray()
+    X_val_tfidf   = vectorizer.transform(list(X_val)).toarray()
+    X_test_tfidf  = vectorizer.transform(list(X_test)).toarray()
 
     # Convert to Tensors
     X_train_tensor = torch.tensor(X_train_tfidf, dtype=torch.float32)
@@ -44,7 +43,8 @@ def train(cfg):
     # Model
     model = HybridClassifier(
         input_dim=X_train_tfidf.shape[1],
-        n_qubits=cfg["n_qubits"]
+        n_qubits=cfg["n_qubits"],
+        n_layers=cfg["n_layers"]
     ).to(device)
 
     optimizer = optim.Adam(model.parameters(), lr=cfg["lr"])
@@ -106,7 +106,7 @@ def train(cfg):
         test_f1  = f1_score(y_test_tensor.cpu(), test_pred.cpu(), average="weighted")
         test_auc = roc_auc_score(y_test_tensor.cpu(), test_probs.cpu())
 
-    print("\n=== Final Test Results ===")
+    print("\nFinal Test Results")
     print(f"Dataset  : {cfg['dataset']}")
     print(f"Accuracy : {test_acc:.4f}")
     print(f"F1-Score : {test_f1:.4f}")
