@@ -71,7 +71,7 @@ The QNN achieves the best results on CR, SUBJ, and MPQA across all evaluated met
 
 ## Citation
 
-If you use this code, please cite our paper:
+If you find this work useful, please consider citing our paper:
 
 ```bibtex
 Will be provided once available.
