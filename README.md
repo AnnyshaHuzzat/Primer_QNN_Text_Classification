@@ -28,12 +28,14 @@ The pipeline consists of three stages.
 1. A TF-IDF vectorizer compresses raw text into a 5,000-dimensional sparse feature vector.
 2. A fully-connected linear layer with tanh activation projects the features down to 4 dimensions, one per qubit.
 3. A variational quantum circuit (VQC) with 4 qubits and 2 layers applies angle embedding, parameterized RX, RY, RZ rotations, and CNOT entanglement. Pauli-Z expectation values are measured and passed to a final linear classification layer.
+   
+<img src="pipeline.png" width="600"/>
+Figure 1. Flow diagram of our proposed QNN model. The core component of the pipeline is the VQC, which is further illustrated in Figure 2. 
 
-![Pipeline](pipeline.png)
-![VQC](vqc.png)
+<img src="vqc.png" width="600"/>
+Figure 2. Four-qubit VQC with angle embedding, parameterized RX, RY, RZ rotations, CNOT entanglement, and Pauli-Z measurements. Circuit configuration selected based on ablation studies.
 
 Total trainable parameters: 20,038.
-
 ## Usage
 
 ```bash
