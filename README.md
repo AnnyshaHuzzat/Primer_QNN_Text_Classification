@@ -29,8 +29,8 @@ The pipeline consists of three stages.
 2. A fully-connected linear layer with tanh activation projects the features down to 4 dimensions, one per qubit.
 3. A variational quantum circuit (VQC) with 4 qubits and 2 layers applies angle embedding, parameterized RX, RY, RZ rotations, and CNOT entanglement. Pauli-Z expectation values are measured and passed to a final linear classification layer.
 
-![Pipeline](figures/pipeline.png)
-![VQC](figures/vqc.png)
+![Pipeline](pipeline.png)
+![VQC](vqc.png)
 
 Total trainable parameters: 20,038.
 
