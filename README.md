@@ -36,11 +36,13 @@ Figure 1. Flow diagram of our proposed QNN model. The core component of the pipe
 Figure 2. Four-qubit VQC with angle embedding, parameterized RX, RY, RZ rotations, CNOT entanglement, and Pauli-Z measurements. Circuit configuration selected based on ablation studies.
 
 Total trainable parameters: 20,038.
+
+Run `train.py` to train and evaluate the model on any dataset. Training, validation, and test evaluation are handled in a single run.
+
 ## Usage
 
 ```bash
-python -m src.train --dataset CR
-python -m src.train --dataset SUBJ --n_qubits 4 --n_layers 2 --max_features 5000
+python -m src.train --dataset MR
 ```
 
 Available arguments:
