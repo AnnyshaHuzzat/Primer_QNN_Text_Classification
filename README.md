@@ -37,7 +37,7 @@ Figure 2. Four-qubit VQC with angle embedding, parameterized RX, RY, RZ rotation
 
 Total trainable parameters: 20,038.
 
-Run `train.py` to train and evaluate the model on any dataset. Training, validation, and test evaluation are handled in a single run.
+Run `arc/train.py` to train and evaluate the model on any dataset. Training, validation, and test evaluation are handled in a single run.
 
 ## Usage
 
