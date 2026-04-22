@@ -73,9 +73,13 @@ The QNN achieves the best results on CR, SUBJ, and MPQA across all evaluated met
 
 If you find this work useful, please consider citing our paper:
 
-```bibtex
-Will be provided once available.
-```
+@article{huzzat2026primer,
+  title={A Primer on Quantum Neural Network Model for Text Classification: From Concept to Design},
+  author={Huzzat, Annysha and Khwaja, Ahmed S and Adhikari, Bhagawat and Alnoman, Ali and Woungang, Isaac and Anpalagan, Alagan},
+  journal={IEEE Access},
+  year={2026},
+  publisher={IEEE}
+}
 
 ## License
 
